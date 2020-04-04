@@ -29,6 +29,7 @@
     path: "{{ pihole_directory }}/automated install/basic-install.sh"
     regexp: '^.*webroot.*$'
     line: "webroot = {{ pihole_webroot }}"
+  when: pihole_webroot != "/var/www/html"
 
 - name: Creation of Pihole web directory
   file:
@@ -50,7 +51,7 @@
     - name: Fixing directories permissions in PiHole web files
       command: find {{ pihole_webroot }} -type d -exec chmod -c 0750 {} \;
       register: d_chmod_result
-      changed_when: "d_chmod_result.stdout != \"\"
+      changed_when: "d_chmod_result.stdout != \"\""
 
     - name: Fixing files permissions in PiHole web files
       command: find {{ pihole_webroot }} -type f -exec chmod -c 0640 {} \;

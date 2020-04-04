@@ -10,6 +10,9 @@ Raspberry Pi with Raspbian
 ## Role Variables
 [defaults/main.yml](defaults/main.yml) for default values
 ```yaml
+
+webserver_user:
+webserver_group:
 pihole_repo: https://github.com/pi-hole/pi-hole.git
 pihole_directory:
 pihole_branch:
